@@ -110,6 +110,8 @@ func TestMe(t *testing.T) {
 		})
 		assert.NoError(t, err)
 
-		assert.Equal(t, respErr.Status())
+		assert.Equal(t, respErr.Status(), response.Code)
+		assert.Equal(t, respBody, response.Body.Bytes())
+		mockUserService.AssertExpectations(t)
 	})
 }
